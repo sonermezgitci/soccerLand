@@ -1,0 +1,26 @@
+<h1> Teams:<%=link_to @teams, teams_path %> </h1> 
+<h1>Contracts:<%=link_to @players, players_path %> </h1>
+<h1>Reviews:<%=link_to @reviews, reviews_path%> </h1>
+
+
+
+
+<h1>All Contracts</h1>
+<%@contracts.each do |contract|%>
+<br>
+<h1>  Name :<%=contract.player.name%></h1>
+<br>
+<h4>Team name :<%=contract.team.name%></h4>
+
+
+<h4>Start date: <%=contract.start_date %></h4>
+<h5>Expiration<%=contract.expiration_date %></h5>
+<h3>Amount:<%=contract.amount %></h3>
+
+
+<%end%>
+
+
+
+
+

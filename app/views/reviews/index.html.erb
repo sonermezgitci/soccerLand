@@ -1,0 +1,13 @@
+
+
+
+
+
+<h1>All reviews</h1>
+<%@reviews.each do |review|%>
+<h3>Player Name:<%=link_to review.player.name, player_path(review.player.id) %></h3>
+<h3>Team Name:<%=link_to review.team.name, team_path(review.team.id) %></h3>
+<br>
+<h4>Team Name :<%=review.team.name%></h4>
+<h4>Reviews :<%=review.comment %></h4>
+<%end%>

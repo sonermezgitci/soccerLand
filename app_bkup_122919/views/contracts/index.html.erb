@@ -1,0 +1,14 @@
+<h1>All Contracts</h1>
+<%@contracts.each do |contract|%>
+
+<h4>Start date: <%=contract.start_date %></h4>
+<h5>Expiration<%=contract.expiration_date %></h5>
+<h1>Amount:<%=contract.amount %></h1>
+<%end%>
+
+<% @contracts.player.each do |player| %>
+<%= player.name%>
+
+<%end%>
+
+

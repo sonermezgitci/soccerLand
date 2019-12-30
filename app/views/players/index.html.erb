@@ -1,0 +1,26 @@
+<h1> Teams:<%=link_to @teams, teams_path %> </h1> 
+<h1>Contracts:<%=link_to @contracts, contracts_path %> </h1>
+<h1>Reviews:<%=link_to @reviews, reviews_path%> </h1>
+
+<form @players>
+<input>
+<button>
+</form>
+<h1>TRANSFER MARKET </h1>
+
+
+
+
+<%@players.each do |player|%>
+<img style="width: 200px; height: 200px; display: block" src="<%=player.image_url%>"/><br>
+<h2>Name:<%=link_to player.name, player_path(player.id)%></h2>
+
+<h4>Stats:<%=player.stats%></h4>
+<h5>Age:<%=player.age%></h5>
+<h6>Nationality:<%=player.nationality%></h6>
+
+
+
+
+
+<%end%>

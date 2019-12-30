@@ -1,0 +1,23 @@
+<h1>New Contract</h1>
+
+<%=form_for @contract do |f|%>
+<div><%=f.label :player_id%></div>
+<div><%=f.collection_select :player_id, Player.all, :id, :name%></div>
+<div><%=f.label :team_id%></div>
+<div><%=f.collection_select :team_id, Team.all, :id, :name%></div>
+<div><%=f.label :start_date%></div>
+<div><%=f.number_field :start_date%></div>
+<div><%=f.label :expiration_date%>
+<div><%=f.number_field :expiration_date%></div>
+<div><%=f.label :amount%></div>
+<div><%=f.text_field :amount%></div>
+
+
+
+
+
+<%=f.submit%>
+<br>
+<%=link_to 'Players', players_path %>
+</br>
+<%end%>

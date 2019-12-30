@@ -1,0 +1,37 @@
+
+<div>
+<img style="width: 200px; height: 200px; display: block" src="<%=@player.image_url%>"/></div>
+<h1>Name:<%=@player.name%>
+<h2><li>Age:<%=@player.age%></li>
+<h2><li>Stats:<%=@player.stats%></li>
+<h2><em>Nationality:<%=@player.nationality%></h2></em>
+<h6><em>Latest News:<%=@player.bio%></h6></em>
+
+<% if @player.teams.last == nil %> 
+<h3><em>Team: Free Agent</em></h3> 
+<h4><em>Stadium: N/A</em>
+<%else%>
+<h3><em>Team: <%= @player.teams.last.name %></h3></em>
+<h4><em>Stadium:<%=@player.teams.last.stadium%></em>
+<%end%>
+
+
+
+
+<% @player.contracts.each do |contract| %>
+<h4>Conract Start Date:<em><%=contract.start_date %></em></h4>
+<h4><em>Conract Expiration date:<%=contract.expiration_date %></em></h4>
+<h2><em>value:<%=contract.amount %></em><h2>
+
+<%end%>
+
+
+<div><h6>Highlights</h6>
+<iframe width="560" height="315" src="<%=@player.youtube_url%>"  frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+<ul>
+<% @player.reviews.each do |review| %>
+<h6><em>Reviews:<%=review.comment%></h6><em>
+</ul>
+<%end%>
+<h4><em><%= button_to "Delete This Player", player_path(@player.id) , method: :delete%><em></h4>

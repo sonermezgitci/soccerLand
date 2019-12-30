@@ -1,0 +1,20 @@
+<h1>TRANSFER MARKET </h1>
+<em><%= form_with(url: "/search", method: "get") do %></em>
+  <%= label_tag(:q, "Search for:") %>
+  <%= text_field_tag(:q) %>
+  <%= submit_tag("Search") %>
+
+<% end %>
+<%@players.each do |player|%>
+<img style="width: 200px; height: 200px; display: block" src="<%=player.image_url%>"/><br>
+<h2>Name:<%=link_to player.name, player_path(player.id)%></h2>
+
+<h4>Stats:<%=player.stats%></h4>
+<h5>Age:<%=player.age%></h5>
+<h6>Nationality:<%=player.nationality%></h6>
+
+
+
+
+
+<%end%>
