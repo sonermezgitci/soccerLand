@@ -1,0 +1,15 @@
+<h1>TRANSFER STATUS</h1>
+<div>
+<br>
+<h1>Player Name:<%=link_to @contract.player.name, player_path(@contract.player.id)%></h1>
+
+<br>
+<h3><em>Team Name:<%=link_to @contract.team.name, team_path(@contract.team.id) %></h3><em>
+<h4>Start date:<%=@contract.start_date %></h4>
+<h5>Expiration<%=@contract.expiration_date %></h5>
+<h1><em>Amount:<%=@contract.amount %><em></h1>
+<p>
+<h4><em><%= button_to "Delete This Contract", contract_path(@contract.id) , method: :delete%><em></h4>
+</p>
+
+<h2><%=link_to 'See All Players', players_path %></h2>

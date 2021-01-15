@@ -23,9 +23,11 @@ ActiveRecord::Schema.define(version: 2019_12_25_155312) do
   create_table "players", force: :cascade do |t|
     t.string "name"
     t.integer "age"
-    t.string "bio"
+    t.string "news"
     t.string "nationality"
-    t.string "stats"
+    t.integer "appearance"
+    t.integer "assist"
+    t.integer "score"
     t.string "image_url"
     t.string "youtube_url"
   end
@@ -39,7 +41,7 @@ ActiveRecord::Schema.define(version: 2019_12_25_155312) do
   create_table "teams", force: :cascade do |t|
     t.string "name"
     t.string "stadium"
-    t.string "bio"
+    t.string "news"
     t.string "image_url"
   end
 

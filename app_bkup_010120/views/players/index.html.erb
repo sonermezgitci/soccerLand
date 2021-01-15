@@ -1,0 +1,27 @@
+<h1><%= button_to "TEAM", "/teams" , method: :get%><em></h2>
+<h1><em><%= button_to "CONTRACTS", "/contracts" , method: :get%><em></h2>
+<h1><em><%= button_to "REVIEWS", "/reviews" , method: :get%><em></h2>
+<h4>Search by Players</h4>
+<%= form_tag(players_path, method: :get) do%>
+<%= text_field_tag :name%>
+<%= submit_tag :Search%>
+<% end %>
+    <%if @player %>
+    <%=link_to @player.name, player_path(@player.id)%>
+    <%end%>
+<%@players.each do |player|%>
+<%link_to player.name, player_path(player.id)%><br>
+<%end%>
+
+
+ <h1>TRANSFER MARKET </h1>
+<%@players.each do |player|%>
+<img style="width: 200px; height: 200px; display: block" src="<%=player.image_url%>"/><br>
+<h2>Name:<%=link_to player.name, player_path(player.id)%></h2>
+
+<h4>Asist:<%=player.assist%></h4>
+<h4>Apperance:<%=player.appearance%></h4>
+<h4>Goal:<%=player.score%></h4>
+<h5>Age:<%=player.age%></h5>
+<h6>Nationality:<%=player.nationality%></h6>
+<%end%>

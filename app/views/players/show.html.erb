@@ -1,38 +1,61 @@
 
+<div style="display:inline-block;">
+<%= button_to "TEAMS", "/teams" , method: :get%>
+<%= button_to "NEW OFFER", "/contracts/new" , method: :get%>
+<%= button_to "REVIEWS", "/reviews" , method: :get%>
+<%= button_to "SEE ALL PLAYERS", "/players" , method: :get%>
+</div>
+
+
 <div>
 <img style="width: 200px; height: 200px; display: block" src="<%=@player.image_url%>"/></div>
 <h1>Name:<%=@player.name%>
-<h2><li>Age:<%=@player.age%></li>
-<h2><li>Stats:<%=@player.stats%></li>
-<h2><em>Nationality:<%=@player.nationality%></h2></em>
-<h6><em>Latest News:<%=@player.bio%></h6></em>
+<h2><li>Age: <%=@player.age%></li>
+    <li>Nationality: <%=@player.nationality%></li>
+    <li>Appearance: <%=@player.appearance%></li>
+    <li>Assist: <%=@player.assist%></li>
+    <li>Goal: <%=@player.score%></li>
+<h2>Latest News: <h3> <%=@player.news%></h3></h2>
 
 <% if @player.teams.last == nil %> 
-<h3><em>Team: Free Agent</em></h3> 
-<h4><em>Stadium: N/A</em>
+<h2>Team: Free Agent</h2> 
+<h2>Stadium: N/A</h2>
 <%else%>
-<h3><em>Team: <%= @player.teams.last.name %></h3></em>
-<h4><em>Stadium:<%=@player.teams.last.stadium%></em>
+<h2>Team: <%= @player.teams.last.name %></h2>
+<h2>Stadium: <%=@player.teams.last.stadium%></h2>
 <%end%>
 
 
 
 
 <% @player.contracts.each do |contract| %>
-<h4>Conract Start Date:<em><%=contract.start_date %></em></h4>
-<h4><em>Conract Expiration date:<%=contract.expiration_date %></em></h4>
-<h2><em>value:<%=contract.amount %></em><h2>
-
+<h2><b>Conract Start Date:</b> <%=contract.start_date %></h2>
+<h2><b>Conract Expiration date:</b> <%=contract.expiration_date %></h2>
+<h2><b>Value:</b> <%=contract.amount %><h2>
 <%end%>
 
 
-<div><h6>Highlights</h6>
+<div><h2>Highlights</h2>
 <iframe width="560" height="315" src="<%=@player.youtube_url%>"  frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 <ul>
-<% @player.reviews.each do |review| %>
-<h6><em>Reviews:<%=review.comment%></h6><em>
-</ul>
+
+
+<%=form_for @review do |f|%>
+<%= f.hidden_field :player_id, :value => @player.id %>
+<%=f.label :team_id%>
+<br>
+<%=f.collection_select :team_id, Team.all,:id,:name%>
+<br><%=f.label :comment%>
+<br>
+<%=f.text_field :comment%>
+<br>
+<br><%=f.submit%></br>
+<% end %>
+<% @player.reviews.each do |review|%>
+<h6>Reviews:<em><%=review.comment%><em></h6>
 <%end%>
-<h2><em><%= button_to "Offer A contract $", "/contracts/new" , method: :get%><em></h2>
-<h4><em><%= button_to "Delete This Player", player_path(@player.id) , method: :delete%><em></h4>
+
+
+
+

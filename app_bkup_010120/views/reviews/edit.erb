@@ -1,0 +1,17 @@
+<%=form_for @review do |f|%>
+<%=f.label :player_id%>
+<br>
+<%=f.collection_select :player_id, Player.all,:id,:name%>
+<br>
+<%=f.label :team_id%>
+<br>
+<%=f.collection_select :team_id, Team.all,:id,:name%>
+<br><%=f.label :comment%>
+<br>
+<%=f.text_field :comment%>
+<br>
+<br><%=f.submit%></br>
+<br><%=link_to 'Players', players_path %></br>
+
+
+<%end%>

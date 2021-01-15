@@ -1,13 +1,26 @@
-<h1>Team Name:<%=@team.name%></h1>
-<li>Stadium:<%=@team.stadium%></li>
-<li>Latest News:<%=@team.bio%></li>
+<div style="display:inline-block;">
+<%= button_to "PLAYERS", "/players" , method: :get%> 
+<%= button_to "CONTRACTS", "/contracts" , method: :get%> 
+<%= button_to "REVIEWS", "/reviews" , method: :get%>
+<%= button_to "TEAMS", "/teams" , method: :get%> 
+<h1><%=@team.name%></h1>
+<img style="width: 200px; height: 200px; display: block" src=<%=@team.image_url%>/><br>
 
-<%@team.players.each do |player|%>
-
-<div>
-<h3>Players:<%=player.name%></h3>
 </div>
 
-<%=link_to "See All Players", players_path%>
 
+<h3>Stadium:<%=@team.stadium%></h3>
+<li>Latest News:<%=@team.news%></li>
+
+<h2>Players</h2>
+
+<%@players.each do |player|%>
+<h3><li><%=link_to player.name, player_path(player.id)%></li></h3>
 <%end%>
+
+<br>
+<%= button_to "PLAYERS", "/players" , method: :get%> 
+<%= button_to "TEAMS", "/TEAMS" , method: :get%> 
+<%= button_to "CONTRACTS", "/contracts" , method: :get%> 
+<%= button_to "REVIEWS", "/reviews" , method: :get%>
+</br>

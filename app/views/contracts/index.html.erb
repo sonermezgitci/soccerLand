@@ -1,24 +1,23 @@
-<h1> Teams:<%=link_to @teams, teams_path %> </h1> 
-<h1>Contracts:<%=link_to @players, players_path %> </h1>
-<h1>Reviews:<%=link_to @reviews, reviews_path%> </h1>
-
+<div style="display:inline-block;">
+<%= button_to "PLAYERS", "/players" , method: :get%> 
+<%= button_to "TEAM", "/teams" , method: :get%> 
+<%= button_to "REVIEWS", "/reviews" , method: :get%>
+</div>
 
 
 
 <h1>All Contracts</h1>
 <%@contracts.each do |contract|%>
-<br>
-<h1>  Name :<%=contract.player.name%></h1>
-<br>
-<h4>Team name :<%=contract.team.name%></h4>
-
-
-<h4>Start date: <%=contract.start_date %></h4>
-<h5>Expiration<%=contract.expiration_date %></h5>
-<h3>Amount:<%=contract.amount %></h3>
-
-
+   
+    <h2>Name: <%=link_to contract.player.name, player_path(contract.player.id)%> </h2>
+    <h3>Team name: <%=link_to contract.team.name, team_path(contract.team.id) %></h3>
+    <h3>Start date: <%=contract.start_date %></h3>
+    <h3>Expiration: <%=contract.expiration_date %></h3>
+    <h3>Amount: <%=contract.amount %></h3>
+    <%= button_to "UPDATE CONTRACT", edit_contract_path(contract.id), method: :get%>
+    <br>
 <%end%>
+
 
 
 

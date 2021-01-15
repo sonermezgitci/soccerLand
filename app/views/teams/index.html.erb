@@ -1,8 +1,15 @@
+<div style="display:inline-block;">
+<%= button_to "PLAYERS", "/players" , method: :get%>
+<%= button_to "CONTRACTS", "/contracts" , method: :get%> 
+<%= button_to "REVIEWS", "/reviews" , method: :get%> 
+</div>
+
+
 <h1>Teams</h1>
 <p><h2><%@teams.each do |team|%><h2/></p>
-<p><h3>Name:<%=link_to team.name, team_path(team.id)%></p></h3>
-<p><h4>Stadium:<%=team.stadium%></h4></p>
-<p><h5>latest News:<%=team.bio%></h5></p>
+<p><h2>Name:<%=link_to team.name, team_path(team.id)%></p></h2>
+<p><h2>Stadium:<%=team.stadium%></h2></p>
+
 <%team.image_url%>
 <img style="width: 200px; height: 200px; display: block" src=<%=team.image_url%>/><br>
 

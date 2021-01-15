@@ -1,26 +1,27 @@
-<h1> Teams:<%=link_to @teams, teams_path %> </h1> 
-<h1>Contracts:<%=link_to @contracts, contracts_path %> </h1>
-<h1>Reviews:<%=link_to @reviews, reviews_path%> </h1>
+<div style="display:inline-block;">
+<%= button_to "TEAMS", "/teams" , method: :get%> 
+<%= button_to "CONTRACTS", "/contracts" , method: :get%> 
+<%= button_to "REVIEWS", "/reviews" , method: :get%>
+</div>
 
-<form @players>
-<input>
-<button>
-</form>
+
+<h4>Search by Players</h4>
+<%= form_tag(players_path, method: :get) do%>
+<%= text_field_tag :name%>
+<%= submit_tag :Search%>
+<% end %>
+    <%if @player %>
+    <%=link_to @player.name, player_path(@player.id)%>
+    <%end%>
+
 <h1>TRANSFER MARKET </h1>
-
-
-
-
 <%@players.each do |player|%>
 <img style="width: 200px; height: 200px; display: block" src="<%=player.image_url%>"/><br>
 <h2>Name:<%=link_to player.name, player_path(player.id)%></h2>
 
-<h4>Stats:<%=player.stats%></h4>
-<h5>Age:<%=player.age%></h5>
-<h6>Nationality:<%=player.nationality%></h6>
-
-
-
-
-
+<h2>Asist:<%=player.assist%></h2>
+<h2>Apperance:<%=player.appearance%></h2>
+<h2>Goal:<%=player.score%></h2>
+<h2>Age:<%=player.age%></h2>
+<h2>Nationality:<%=player.nationality%></h2>
 <%end%>
